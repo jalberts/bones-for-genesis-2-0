@@ -7,19 +7,19 @@ A starting point for new Genesis projects. This is a starter child theme, not a 
 
 *Issues and pull requests are welcome and will be addressed.*
 
-**Note: As of v2.2.0, BFG uses [Grunt](http://gruntjs.com/) instead of Codekit and [Bower](http://bower.io/) instead of Git submodules. Apologies for the extra dependencies, but I believe this is a step toward fewer compile errors and less painful project management.**
+**Note: As of v2.2.0, prc uses [Grunt](http://gruntjs.com/) instead of Codekit and [Bower](http://bower.io/) instead of Git submodules. Apologies for the extra dependencies, but I believe this is a step toward fewer compile errors and less painful project management.**
 
 ## To Get Started
 You'll need [Node.js](http://nodejs.org/), [Grunt](http://gruntjs.com/), and [Bower](http://bower.io/).
 
 ```
-git clone https://github.com/cdukes/bones-for-genesis-2-0.git genesis-bfg
-cd genesis-bfg
+git clone https://github.com/cdukes/bones-for-genesis-2-0.git genesis-prc
+cd genesis-prc
 npm update --save-dev && bower update --save
 grunt
 ```
 
-*All functions are prefixed with `bfg`. Do a find-and-replace to align the these function names to your project's prefix.'*
+*All functions are prefixed with `prc`. Do a find-and-replace to align the these function names to your project's prefix.'*
 
 ## Developer Tools (disabled by default)
 - Display database query info in your footer
@@ -182,7 +182,7 @@ grunt
 - `Gruntfile.js`: `csso` now keeps `restructure` off by default
 - `Gruntfile.js`: `colorguard` is no longer run by default
 - Added some default styling for the search form
-- Added Chrome on Android and iOS web app lines to `bfg_load_favicons()`
+- Added Chrome on Android and iOS web app lines to `prc_load_favicons()`
 - Added some styles fixes from H5BP
 
 ### 2.2.16 (August 27, 2014)
@@ -212,8 +212,8 @@ grunt
 
 ### 2.2.11 (June 21, 2014)
 - Fixed some code formatting issues
-- Enabled `bfg_remove_xmlrpc_pingback_ping` by default
-- Removed `bfg_remove_ptags_on_images`, since it no longer works. As an alternative, I've [suggested making `wpautop()`'s block elements list filterable](https://core.trac.wordpress.org/ticket/28607)
+- Enabled `prc_remove_xmlrpc_pingback_ping` by default
+- Removed `prc_remove_ptags_on_images`, since it no longer works. As an alternative, I've [suggested making `wpautop()`'s block elements list filterable](https://core.trac.wordpress.org/ticket/28607)
 - Set `appearance: none;` on `input` elements by default
 
 ### 2.2.10 (June 6, 2014)
@@ -279,7 +279,7 @@ grunt
 - Fixed jQuery version reference in `includes/header.php`
 
 ### 2.0.22 (January 10, 2014)
-- Removed `bfg_prevent_child_theme_update`, since Genesis 2.0.2 now does this.
+- Removed `prc_prevent_child_theme_update`, since Genesis 2.0.2 now does this.
 
 ### 2.0.21 (January 8, 2014)
 - Added `$rss` social color variable
@@ -336,14 +336,14 @@ grunt
 - Added code to remove the comments reply form. Disabled this code and the `genesis_do_comments` removal code by default.
 - Deactivated the IE-only stylesheet by default
 - Moved jQuery to the footer
-- Added a footer script to redraw `@font-face` fonts on IE8. (Enabled by default - if you're using BFG, I *hope* you're using icon fonts, as well.)
+- Added a footer script to redraw `@font-face` fonts on IE8. (Enabled by default - if you're using prc, I *hope* you're using icon fonts, as well.)
 - Submodules update
 
 ### 2.0.12 (August 19, 2013)
 - Removed duplicate `box-sizing: border-box;` on `input[type="search"]`
 - Added a `hide-print` class
 - Removed `genesis_older_link_text` and `genesis_newer_link_text` link filter templates, since they're not used in G2.0
-- Added `bfg_remove_scripts_meta_boxes` to remove the scripts metaboxes from posts and/or pages in G2.0
+- Added `prc_remove_scripts_meta_boxes` to remove the scripts metaboxes from posts and/or pages in G2.0
 
 ### 2.0.11 (August 11, 2013)
 - `editor-style.scss` now imports some basic styling (type, grid, objects/images) and is toggled 'on' by default
@@ -367,17 +367,17 @@ grunt
 - Added snippets for removing the header, site title, site description, nav menus, post title, and post edit link (all disabled by default)
 - Removed `table` clearfix, as it was causing `<thead>`s to collapse
 - Added `%inline-block` helper SASS
-- `bfg_load_scripts` doesn't need to be called with priority `999`
+- `prc_load_scripts` doesn't need to be called with priority `999`
 
 ### 2.0.8 (July 27, 2013)
 - Removed measurements from `_headings.scss`
 - Added a custom body class function for page templates
-- Cleaner `bfg_remove_dashboard_menus`
+- Cleaner `prc_remove_dashboard_menus`
 - Removed (non-functional) option to disable the link manager
 
 ### 2.0.7 (July 24, 2013)
-- Added better defaults to `bfg_remove_theme_settings_metaboxes`
-- Moved `comment-reply` enqueuing from `bfg_load_stylesheets` to `bfg_load_scripts`
+- Added better defaults to `prc_remove_theme_settings_metaboxes`
+- Moved `comment-reply` enqueuing from `prc_load_stylesheets` to `prc_load_scripts`
 - Better word break and text overflow handling
 
 ### 2.0.6 (July 20, 2013)
@@ -388,7 +388,7 @@ grunt
 - jQuery version bump
 
 ### 2.0.5 (July 16, 2013)
-- For `comment-reply` script loading, changed `is_singular()` to `is_single() || is_page() || is_attachment()` in `bfg_load_stylesheets()` for better granularity
+- For `comment-reply` script loading, changed `is_singular()` to `is_single() || is_page() || is_attachment()` in `prc_load_stylesheets()` for better granularity
 - Added function in `search.php` to redirect directly to the result on searches with only one result (disabled by default)
 - Title links should typically inherit their `.entry-title` color, not show the default link color
 - Added filters in `post.php` to customize the older/newer post navigation text (disabled by default)
@@ -433,4 +433,4 @@ grunt
 - Added `_shame.scss` file
 
 ### v2.0 (June 9, 2013)
-- Initial release of Genesis 2.0 BFG fork
+- Initial release of Genesis 2.0 prc fork

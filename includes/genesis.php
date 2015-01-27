@@ -67,8 +67,8 @@ add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form'
 // add_theme_support(
 // 	'genesis-style-selector',
 // 	array(
-// 		'bfg-red' => 'Red',
-// 		'bfg-orange' => 'Orange'
+// 		'prc-red' => 'Red',
+// 		'prc-orange' => 'Orange'
 // 	)
 // );
 
@@ -116,13 +116,13 @@ add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form'
 // 	)
 // );
 
-// add_action( 'widgets_init', 'bfg_remove_genesis_widgets', 20 );
+// add_action( 'widgets_init', 'prc_remove_genesis_widgets', 20 );
 /**
  * Disable some or all of the default Genesis widgets.
  *
  * @since 2.0.0
  */
-function bfg_remove_genesis_widgets() {
+function prc_remove_genesis_widgets() {
 
 	unregister_widget( 'Genesis_Featured_Page' );									// Featured Page
 	unregister_widget( 'Genesis_User_Profile_Widget' );								// User Profile
@@ -130,26 +130,26 @@ function bfg_remove_genesis_widgets() {
 
 }
 
-// add_action( 'init', 'bfg_remove_layout_meta_boxes' );
+// add_action( 'init', 'prc_remove_layout_meta_boxes' );
 /**
  * Remove the Genesis 'Layout Settings' meta box for posts and/or pages.
  *
  * @since 2.0.0
  */
-function bfg_remove_layout_meta_boxes() {
+function prc_remove_layout_meta_boxes() {
 
 	remove_post_type_support( 'post', 'genesis-layouts' );							// Posts
 	remove_post_type_support( 'page', 'genesis-layouts' );							// Pages
 
 }
 
-// add_action( 'init', 'bfg_remove_scripts_meta_boxes' );
+// add_action( 'init', 'prc_remove_scripts_meta_boxes' );
 /**
  * Remove the Genesis 'Scripts' meta box for posts and/or pages.
  *
  * @since 2.0.12
  */
-function bfg_remove_scripts_meta_boxes() {
+function prc_remove_scripts_meta_boxes() {
 
 	remove_post_type_support( 'post', 'genesis-scripts' );							// Posts
 	remove_post_type_support( 'page', 'genesis-scripts' );							// Pages
@@ -162,8 +162,8 @@ function bfg_remove_scripts_meta_boxes() {
  * @since 2.0.22
  */
 remove_action( 'after_setup_theme', 'genesis_seo_compatibility_check' );
-add_action( 'after_setup_theme', 'bfg_maybe_disable_genesis_seo', 8 );
-function bfg_maybe_disable_genesis_seo() {
+add_action( 'after_setup_theme', 'prc_maybe_disable_genesis_seo', 8 );
+function prc_maybe_disable_genesis_seo() {
 
 	genesis_disable_seo();
 

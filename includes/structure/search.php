@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_filter( 'genesis_search_text', 'bfg_search_text' );
+// add_filter( 'genesis_search_text', 'prc_search_text' );
 /**
  * Customize the search form input box text
  *
@@ -10,13 +10,13 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.0.0
  */
-function bfg_search_text() {
+function prc_search_text() {
 
 	return esc_attr( 'Search Text Goes Here...' );
 
 }
 
-// add_filter( 'genesis_search_button_text', 'bfg_search_button_text' );
+// add_filter( 'genesis_search_button_text', 'prc_search_button_text' );
 /**
  * Customize the search form input button text
  *
@@ -24,13 +24,13 @@ function bfg_search_text() {
  *
  * @since 2.0.0
  */
-function bfg_search_button_text( $text ) {
+function prc_search_button_text( $text ) {
 
 	return esc_attr( 'Click Here...' );
 
 }
 
-// add_action( 'template_redirect', 'bfg_redirect_single_search_result' );
+// add_action( 'template_redirect', 'prc_redirect_single_search_result' );
 /**
  * Redirect to the result itself, if only one search result is returned
  *
@@ -38,7 +38,7 @@ function bfg_search_button_text( $text ) {
  *
  * @since 2.0.5
  */
-function bfg_redirect_single_search_result() {
+function prc_redirect_single_search_result() {
 
 	if( is_search() ) {
 		global $wp_query;
@@ -50,7 +50,7 @@ function bfg_redirect_single_search_result() {
 
 }
 
-// add_filter( 'pre_get_posts', 'bfg_only_search_posts' );
+// add_filter( 'pre_get_posts', 'prc_only_search_posts' );
 /**
  * Limit searching to just posts, excluding pages and CPTs
  *
@@ -58,7 +58,7 @@ function bfg_redirect_single_search_result() {
  *
  * @since 2.0.18
  */
-function bfg_only_search_posts( $query ) {
+function prc_only_search_posts( $query ) {
 
 	if( $query->is_search ) {
 		$query->set( 'post_type', 'post' );

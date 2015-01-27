@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_action( 'wp_footer', 'bfg_query_stats' );
+// add_action( 'wp_footer', 'prc_query_stats' );
 /**
  * Easily see the number of database queries made to load your page in your footer.
  *
@@ -10,13 +10,13 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.0.0
  */
-function bfg_query_stats() {
+function prc_query_stats() {
 
 	echo get_num_queries() . ' queries in ' . timer_stop(1) . ' seconds.';
 
 }
 
-// add_action( 'get_header', 'bfg_maintenance_mode' );
+// add_action( 'get_header', 'prc_maintenance_mode' );
 /**
  * Easily take your site down for maintenance, giving a 503 message for all non-admins.
  *
@@ -24,7 +24,7 @@ function bfg_query_stats() {
  *
  * @since 2.0.0
  */
-function bfg_maintenance_mode() {
+function prc_maintenance_mode() {
 
 	if( !(is_user_logged_in() && current_user_can( 'manage_options' ) ) ) {
 		wp_die( 'Down for maintenance, please come back soon.', 'Down for maintenance, please come back soon.', array('response' => '503'));
@@ -32,13 +32,13 @@ function bfg_maintenance_mode() {
 
 }
 
-add_action( 'admin_bar_menu', 'bfg_clear_transients_node', 99 );
+add_action( 'admin_bar_menu', 'prc_clear_transients_node', 99 );
 /**
  * Clear all transients with one click
  *
  * @since 2.2.9
  */
-function bfg_clear_transients_node( $wp_admin_bar ) {
+function prc_clear_transients_node( $wp_admin_bar ) {
 
 	if( !is_admin() || !current_user_can('manage_options') )
 		return;

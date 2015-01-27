@@ -17,7 +17,7 @@ remove_action( 'wp_head', 'wlwmanifest_link');							// WLW Manifest
 // remove_action( 'wp_head', 'feed_links_extra', 3 ); // Remove comment feed links
 
 remove_action( 'genesis_doctype', 'genesis_do_doctype' );
-add_action( 'genesis_doctype', 'bfg_do_doctype' );
+add_action( 'genesis_doctype', 'prc_do_doctype' );
 /**
  * Overrides the default Genesis doctype with IE and JS identifier classes
  *
@@ -25,7 +25,7 @@ add_action( 'genesis_doctype', 'bfg_do_doctype' );
  *
  * @since 2.2.4
  */
-function bfg_do_doctype() {
+function prc_do_doctype() {
 
 	if( genesis_html5() ) {
 ?>
@@ -44,7 +44,7 @@ function bfg_do_doctype() {
 }
 
 remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
-add_action( 'wp_enqueue_scripts', 'bfg_load_stylesheets' );
+add_action( 'wp_enqueue_scripts', 'prc_load_stylesheets' );
 /**
  * Overrides the default Genesis stylesheet with child theme specific.
  *
@@ -52,13 +52,13 @@ add_action( 'wp_enqueue_scripts', 'bfg_load_stylesheets' );
  *
  * @since 2.0.0
  */
-function bfg_load_stylesheets() {
+function prc_load_stylesheets() {
 
 	// Main theme stylesheet
-	wp_enqueue_style( 'bfg', get_stylesheet_directory_uri() . '/build/css/style.min.css', array(), null );
+	wp_enqueue_style( 'prc', get_stylesheet_directory_uri() . '/build/css/style.min.css', array(), null );
 
 	// Fallback for old IE
-	wp_enqueue_style( 'bfg-ie-universal', '//universal-ie6-css.googlecode.com/files/ie6.1.1.css', array(), null );
+	wp_enqueue_style( 'prc-ie-universal', '//universal-ie6-css.googlecode.com/files/ie6.1.1.css', array(), null );
 
 	// Google Fonts
  	// wp_enqueue_style(
@@ -70,7 +70,7 @@ function bfg_load_stylesheets() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'bfg_load_scripts' );
+add_action( 'wp_enqueue_scripts', 'prc_load_scripts' );
 /**
  * Load scripts
  *
@@ -78,7 +78,7 @@ add_action( 'wp_enqueue_scripts', 'bfg_load_scripts' );
  *
  * @since 2.0.0
  */
-function bfg_load_scripts() {
+function prc_load_scripts() {
 
 	if( ( is_single() || is_page() || is_attachment() ) && comments_open() & get_option( 'thread_comments' ) == 1 && !is_front_page() ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -89,14 +89,14 @@ function bfg_load_scripts() {
 	// Override WP default self-hosted jQuery with version from Google's CDN
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', array(), null, true );
-	add_filter( 'script_loader_src', 'bfg_jquery_local_fallback', 10, 2 );
+	add_filter( 'script_loader_src', 'prc_jquery_local_fallback', 10, 2 );
 
 	// Main script file (in footer)
-	wp_enqueue_script( 'bfg', get_stylesheet_directory_uri() . '/build/js/scripts.min.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'prc', get_stylesheet_directory_uri() . '/build/js/scripts.min.js', array( 'jquery' ), null, true );
 
 }
 
-add_filter( 'style_loader_tag', 'bfg_ie_conditionals', 10, 2 );
+add_filter( 'style_loader_tag', 'prc_ie_conditionals', 10, 2 );
 /**
  * Wrap stylesheets in IE conditional comments.
  *
@@ -104,12 +104,12 @@ add_filter( 'style_loader_tag', 'bfg_ie_conditionals', 10, 2 );
  *
  * @since 1.x
  */
-function bfg_ie_conditionals( $tag, $handle ) {
+function prc_ie_conditionals( $tag, $handle ) {
 
-	if( 'bfg' == $handle ) {
+	if( 'prc' == $handle ) {
 		$output = '<!--[if !IE]> -->' . "\n" . $tag . '<!-- <![endif]-->' . "\n";
 		$output .= '<!--[if gte IE 8]>' . "\n" . $tag . '<![endif]-->' . "\n";
-	} elseif( 'bfg-ie-universal' == $handle ) {
+	} elseif( 'prc-ie-universal' == $handle ) {
 		$output = '<!--[if lt IE 8]>' . "\n" . $tag . '<![endif]-->' . "\n";
 	} else {
 		$output = $tag;
@@ -126,8 +126,8 @@ function bfg_ie_conditionals( $tag, $handle ) {
  *
  * @since 2.0.20
  */
-add_action( 'wp_head', 'bfg_jquery_local_fallback' );
-function bfg_jquery_local_fallback( $src, $handle = null ) {
+add_action( 'wp_head', 'prc_jquery_local_fallback' );
+function prc_jquery_local_fallback( $src, $handle = null ) {
 
 	static $add_jquery_fallback = false;
 
@@ -144,20 +144,20 @@ function bfg_jquery_local_fallback( $src, $handle = null ) {
 
 }
 
-// add_filter( 'genesis_pre_load_favicon', 'bfg_pre_load_favicon' );
+// add_filter( 'genesis_pre_load_favicon', 'prc_pre_load_favicon' );
 /**
  * Simple favicon override to specify your favicon's location
  *
  * @since 2.0.0
  */
-function bfg_pre_load_favicon() {
+function prc_pre_load_favicon() {
 
 	return get_stylesheet_directory_uri() . '/images/favicon.ico';
 
 }
 
 // remove_action( 'wp_head', 'genesis_load_favicon' );
-// add_action( 'wp_head', 'bfg_load_favicons' );
+// add_action( 'wp_head', 'prc_load_favicons' );
 /**
  * Show the best favicon, within reason
  *
@@ -165,7 +165,7 @@ function bfg_pre_load_favicon() {
  *
  * @since 2.0.4
  */
-function bfg_load_favicons() {
+function prc_load_favicons() {
 
 	$favicon_path = get_stylesheet_directory_uri() . '/images/favicons';
 

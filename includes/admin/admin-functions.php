@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-add_action( 'pre_ping', 'bfg_disable_self_pings' );
+add_action( 'pre_ping', 'prc_disable_self_pings' );
 /**
  * Prevent the child theme from being overwritten by a WordPress.org theme with the same name.
  *
@@ -10,7 +10,7 @@ add_action( 'pre_ping', 'bfg_disable_self_pings' );
  *
  * @since 2.0.0
  */
-function bfg_disable_self_pings( &$links ) {
+function prc_disable_self_pings( &$links ) {
 
 	foreach ( $links as $l => $link )
 		if ( 0 === strpos( $link, home_url() ) )
@@ -36,7 +36,7 @@ function bfg_disable_self_pings( &$links ) {
  */
 // add_image_size( 'desktop-size', 1024, 768, array( 'left', 'top' ) ); // Crop positions are: top, left, right, bottom, center
 
-// add_filter( 'image_size_names_choose', 'bfg_image_size_names_choose' );
+// add_filter( 'image_size_names_choose', 'prc_image_size_names_choose' );
 /**
  * Add new image sizes to media size selection menu
  *
@@ -44,7 +44,7 @@ function bfg_disable_self_pings( &$links ) {
  *
  * @since 2.0.0
  */
-function bfg_image_size_names_choose( $sizes ) {
+function prc_image_size_names_choose( $sizes ) {
 
 	$sizes['desktop-size'] = 'Desktop';
 	return $sizes;
@@ -106,8 +106,8 @@ function get_image_sizes( $size = '' ) {
  *
  * @since 2.2.3
  */
-add_filter( 'xmlrpc_methods', 'bfg_remove_xmlrpc_pingback_ping' );
-function bfg_remove_xmlrpc_pingback_ping( $methods ) {
+add_filter( 'xmlrpc_methods', 'prc_remove_xmlrpc_pingback_ping' );
+function prc_remove_xmlrpc_pingback_ping( $methods ) {
 
 	unset($methods['pingback.ping']);
 	return $methods;
@@ -128,8 +128,8 @@ function bfg_remove_xmlrpc_pingback_ping( $methods ) {
  *
  * @since 2.2.26
  */
-add_action( '_core_updated_successfully', 'bfg_remove_files_on_upgrade' );
-function bfg_remove_files_on_upgrade() {
+add_action( '_core_updated_successfully', 'prc_remove_files_on_upgrade' );
+function prc_remove_files_on_upgrade() {
 
 	if( file_exists(ABSPATH . 'readme.html') )
 		unlink(ABSPATH . 'readme.html');

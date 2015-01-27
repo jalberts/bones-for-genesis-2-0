@@ -2,13 +2,13 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-add_filter( 'gallery_style', 'bfg_gallery_style' );
+add_filter( 'gallery_style', 'prc_gallery_style' );
 /**
  * Remove the injected styles for the [gallery] shortcode
  *
  * @since 1.x
  */
-function bfg_gallery_style( $css ) {
+function prc_gallery_style( $css ) {
 
 	return preg_replace( "!<style type='text/css'>(.*?)</style>!s", '', $css );
 
@@ -21,7 +21,7 @@ function bfg_gallery_style( $css ) {
  */
 // add_post_type_support( 'page', 'excerpt' );
 
-// add_filter( 'the_content_more_link', 'bfg_more_tag_excerpt_link' );
+// add_filter( 'the_content_more_link', 'prc_more_tag_excerpt_link' );
 /**
  * Customize the excerpt text, when using the <!--more--> tag
  *
@@ -29,14 +29,14 @@ function bfg_gallery_style( $css ) {
  *
  * @since 2.0.16
  */
-function bfg_more_tag_excerpt_link() {
+function prc_more_tag_excerpt_link() {
 
 	return ' <a class="more-link" href="' . get_permalink() . '">Read more &rarr;</a>';
 
 }
 
-// add_filter( 'excerpt_more', 'bfg_truncated_excerpt_link' );
-// add_filter( 'get_the_content_more_link', 'bfg_truncated_excerpt_link' );
+// add_filter( 'excerpt_more', 'prc_truncated_excerpt_link' );
+// add_filter( 'get_the_content_more_link', 'prc_truncated_excerpt_link' );
 /**
  * Customize the excerpt text, when using automatic truncation
  *
@@ -44,14 +44,14 @@ function bfg_more_tag_excerpt_link() {
  *
  * @since 2.0.16
  */
-function bfg_truncated_excerpt_link() {
+function prc_truncated_excerpt_link() {
 
 	return '... <a class="more-link" href="' . get_permalink() . '">Read more &rarr;</a>';
 
 }
 
 // remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
-// add_filter( 'genesis_post_info', 'bfg_post_info' );
+// add_filter( 'genesis_post_info', 'prc_post_info' );
 /**
  * Customize the post info text
  *
@@ -59,7 +59,7 @@ function bfg_truncated_excerpt_link() {
  *
  * @since 2.0.0
  */
-function bfg_post_info() {
+function prc_post_info() {
 
 	return '[post_date] by [post_author_posts_link] [post_comments] [post_edit]';
 	// Friendly note: use [post_author] to return the author's name, without an archive link
@@ -67,7 +67,7 @@ function bfg_post_info() {
 }
 
 // remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
-// add_filter( 'genesis_post_meta', 'bfg_post_meta' );
+// add_filter( 'genesis_post_meta', 'prc_post_meta' );
 /**
  * Customize the post meta text
  *
@@ -75,33 +75,33 @@ function bfg_post_info() {
  *
  * @since 2.0.0
  */
-function bfg_post_meta() {
+function prc_post_meta() {
 
 	return '[post_categories before="Filed Under: "] [post_tags before="Tagged: "]';
 
 }
 
-// add_filter ( 'genesis_prev_link_text' , 'bfg_prev_link_text' );
+// add_filter ( 'genesis_prev_link_text' , 'prc_prev_link_text' );
 /**
  * Customize the post navigation prev text
  * (Only applies to the 'Previous/Next' Post Navigation Technique, set in Genesis > Theme Options)
  *
  * @since 2.0.0
  */
-function bfg_prev_link_text( $text ) {
+function prc_prev_link_text( $text ) {
 
 	return html_entity_decode('&#10216;') . ' ';
 
 }
 
-// add_filter ( 'genesis_next_link_text' , 'bfg_next_link_text' );
+// add_filter ( 'genesis_next_link_text' , 'prc_next_link_text' );
 /**
  * Customize the post navigation next text
  * (Only applies to the 'Previous/Next' Post Navigation Technique, set in Genesis > Theme Options)
  *
  * @since 2.0.0
  */
-function bfg_next_link_text( $text ) {
+function prc_next_link_text( $text ) {
 
 	return ' ' . html_entity_decode('&#10217;');
 
@@ -134,8 +134,8 @@ add_filter( 'edit_post_link', '__return_false' );
  *
  * @since 2.2.18
  */
-add_filter( 'the_password_form', 'bfg_password_form' );
-function bfg_password_form( $post = 0 ) {
+add_filter( 'the_password_form', 'prc_password_form' );
+function prc_password_form( $post = 0 ) {
 
 	$post = get_post( $post );
 	$label = 'pwbox-' . ( empty($post->ID) ? rand() : $post->ID );

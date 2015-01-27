@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_action( 'genesis_theme_settings_metaboxes', 'bfg_remove_theme_settings_metaboxes' );
+// add_action( 'genesis_theme_settings_metaboxes', 'prc_remove_theme_settings_metaboxes' );
 /**
  * Remove some or all of the options metaboxes in Dashboard > Genesis > Theme Settings
  *
@@ -10,7 +10,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.0.0
  */
-function bfg_remove_theme_settings_metaboxes( $_genesis_theme_settings_pagehook ) {
+function prc_remove_theme_settings_metaboxes( $_genesis_theme_settings_pagehook ) {
 
 	// remove_meta_box( 'genesis-theme-settings-version', $_genesis_theme_settings_pagehook, 'main' );			// Information
 	remove_meta_box( 'genesis-theme-settings-feeds', $_genesis_theme_settings_pagehook, 'main' );			// Custom Feeds

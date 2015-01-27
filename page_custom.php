@@ -11,8 +11,8 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.0.8
  */
-add_filter( 'body_class', 'bfg_custom_template_body_class' );
-function bfg_custom_template_body_class( $classes ) {
+add_filter( 'body_class', 'prc_custom_template_body_class' );
+function prc_custom_template_body_class( $classes ) {
 
 	$classes[] = 'landing';
 	return $classes;
